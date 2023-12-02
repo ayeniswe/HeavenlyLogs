@@ -1,10 +1,9 @@
-import './App.css';
-import LoginWall from './pages/LoginWall';
+import Login from './pages/LoginWall';
 
 const App = () => {
   return (
     <div className="App">
-      <LoginWall/>
+      <Login/>
     </div>
   );
 }

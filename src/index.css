@@ -1,13 +1,61 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Bold.ttf') format('truetype');
+  font-style: bold;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Regular.ttf') format('truetype');
+}
+
+:root {
+  --primary-color: #a3966a;
+  --secondary-color: #f0daae;
+  --dynamic-color: #90553c;
+  --background-color: white;
+  --dynamic-hover-color: #90553c;
+  --button-hover-color: #fff0d4;
+  --outline-color-30: rgba(0, 0, 0, 0.3);
+  --outline-color-50: rgba(0, 0, 0, 0.5);
+  --outline-color: black;
+  --text-color: black;
+  --button-font-size: 1.2rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  margin: 0;
+  font-family: 'Josefin Slab';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+button {
+  font-family: 'Josefin Slab';
+  font-weight: bold;
+  font-size: var(--button-font-size);
 }

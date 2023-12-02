@@ -1,14 +1,14 @@
-import LoginWallComponent from './LoginWall';
+import LoginComponent from './Login';
 import { getColorScheme } from '../../utils/colorscheme';
 
-const LoginWall = () => {
+const Login = () => {
     // TODO make color scheme dynamic
     const VIEWPORTBCOLOR = getColorScheme(0).VIEWPORTBCOLOR;
     return (
         <>
-            <LoginWallComponent viewportBColor={VIEWPORTBCOLOR}/>
+            <LoginComponent viewportBColor={VIEWPORTBCOLOR}/>
         </>
     );
 }
 
-export default LoginWall;
+export default Login;

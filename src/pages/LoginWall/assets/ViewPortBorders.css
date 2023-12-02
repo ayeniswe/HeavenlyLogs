@@ -1,0 +1,27 @@
+.ViewPortBorders__vw {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+}
+
+.ViewPortBorders__vw--left {
+    left: 1.5rem;
+}
+
+.ViewPortBorders__vw--right {
+    right: 1.5rem;
+}
+
+.ViewPortBorders__vh {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+}
+
+.ViewPortBorders__vh--top {
+    bottom: 1.5rem;
+}
+
+.ViewPortBorders__vh--bottom {
+    top: 1.5rem;
+}
