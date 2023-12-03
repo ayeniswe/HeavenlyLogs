@@ -1,0 +1,17 @@
+:root {
+  background-color: var(--background-color);
+
+  --primary-color: #a3966a;
+  --secondary-color: #f0daae;
+  --dynamic-color: #90553c;
+  --dynamic-color-50: rgba(144, 85, 60, 0.3);
+  --background-color: rgb(32, 32, 32);
+  --dynamic-hover-color: #90553c;
+  --button-hover-color: #fff0d4;
+  --outline-color-30: rgba(255, 255, 255, 0.3);
+  --outline-color-50: rgba(255, 255, 255, 0.5);
+  --outline-color: rgb(255, 255, 255);
+  --text-color: rgb(255, 255, 255);
+  --text-color-alt: black;
+  --button-font-size: 1.2rem;
+}
