@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Bold.ttf') format('truetype');
+  font-style: bold;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Josefin Slab';
+  src: url('./assets/fonts/JosefinSlab-Regular.ttf') format('truetype');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body {
+  margin: 0;
+  font-family: 'Josefin Slab';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+button {
+  font-family: 'Josefin Slab';
+  font-weight: bold;
+  font-size: var(--button-font-size);
+  color: var(--text-color-alt);
+}

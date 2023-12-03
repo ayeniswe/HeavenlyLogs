@@ -1,0 +1,61 @@
+.ArtViewPortBorder--horizontal {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.ArtViewPortBorder--vertical {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    width: 2rem;
+}
+
+/* If height and/or width increase then
+the width and height respectively needs to be changed in the ArtViewPBorder--vertical and ArtViewPBorder--horizontal class*/
+.ArtViewPortBorder__end {
+    background-color: transparent;
+    border: 0.5rem solid var(--outline-color);
+    height: 0.4rem;
+    transform: rotate(45deg);
+    width: 0.4rem;
+}
+
+.ArtViewPortBorder__hline {
+    background-color: var(--outline-color);
+    height: 0.3rem;
+    width: 100%;
+}
+
+.ArtViewPortBorder__vline {
+    background-color: var(--outline-color);
+    height: 100%;
+    width: 0.3rem;
+}
+
+.ArtBorder--vertical {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    position: relative;
+}
+
+.ArtBorder__end {
+    background-color: var(--outline-color);
+    border: 0.5rem solid var(--outline-color);
+    height: 0.4rem;
+    transform: rotate(45deg);
+    width: 0.4rem;
+}
+
+.ArtBorder__vline {
+    background-color: var(--outline-color);
+    height: 100%;
+    width: 0.3rem;
+}

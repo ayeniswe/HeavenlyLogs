@@ -1,0 +1,36 @@
+.DotLoader {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.DotLoader__dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--text-color);
+    border-radius: 1rem;
+}
+
+.DotLoader__dot {
+    animation: DotLoader__dot 1s infinite;
+}
+.DotLoader__dot:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.DotLoader__dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.DotLoader__dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes DotLoader__dot {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(0);
+    }
+}

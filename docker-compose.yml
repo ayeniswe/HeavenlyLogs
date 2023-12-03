@@ -1,0 +1,12 @@
+version: '0.1.0'
+services:
+  server:
+    container_name: hl-server
+    image: hl-server:0.1.0
+    build:
+      context: ./
+      dockerfile: ./docker/server/Dockerfile
+      args:
+        - name=server
+    ports:
+      - 5000:5000

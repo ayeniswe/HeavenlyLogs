@@ -1,0 +1,25 @@
+.Login__layout {
+    align-items: center;
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+    z-index: 2;
+}
+
+.Login__layout__banner {
+    flex: 1;
+    margin: 5rem;
+    width: 450px;
+}
+
+@media screen and (max-width: 1500px) {
+    .Login__layout__banner {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .Login__layout__center-border {
+        display: none;
+    }
+}
