@@ -1,5 +1,6 @@
 # dependencies
-/app/_hl/node_modules
+app/_hl/node_modules
+app/services/server/node_modules
 
-# production
-/build
+# secret
+.env.server

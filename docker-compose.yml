@@ -1,6 +1,8 @@
-version: '0.1.0'
+version: '3'
 services:
   server:
+    env_file:
+      - ./.env.server
     container_name: hl-server
     image: hl-server:0.1.0
     build:
@@ -10,3 +12,26 @@ services:
         - name=server
     ports:
       - 5000:5000
+    networks:
+      - dev
+    
+  mongodb:
+    container_name: hl-mongodb
+    image: hl-mongodb:0.1.0
+    build:
+      context: ./
+      dockerfile: ./docker/db/mongo/Dockerfile
+      args:
+        - name=mongo
+    ports:
+      - 27017:27017
+    depends_on:
+      - server
+    networks:
+      - dev
+
+networks:
+  dev:
+    ipam:
+      config:
+        - subnet: 172.16.1.0/16
