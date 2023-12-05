@@ -1,20 +1,21 @@
 FROM node:hydrogen-alpine3.18
 
-WORKDIR /app
-
-COPY ./app/services/server /app
-
 ARG name=node
 
+WORKDIR /home/$name/app
+
+COPY ./app/services/server /home/$name/app
+
 # Install dependencies
-RUN npm install express cors
+RUN npm install
 
 # Setup user privileges (not-root)
 RUN addgroup -S $name && \
     adduser -DHS $name $name && \
-    chown -R $name:$name /app
+    chown -R $name:$name /home/$name/app && \
+    # needed for "npx tsx" command
+    chown -R 100:65533 /home/server
 
 USER $name
 
-
-CMD ["node", "server.js", "--development"]
+CMD ["npm", "start"]
