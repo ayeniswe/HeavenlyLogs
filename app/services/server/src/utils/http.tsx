@@ -21,7 +21,7 @@ type Message = {
  * @return {void}
  */
 const sendMessage = (res: Response, status: number, message: string) => {
-    res.status(status).send({ message: message });
+    res.status(status).send({ detail: message });
 }
 
 export {

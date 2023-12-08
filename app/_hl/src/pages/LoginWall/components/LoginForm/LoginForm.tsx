@@ -17,7 +17,7 @@ const LoginForm = () => {
               <label htmlFor='username'>Username</label>
               <br/>
               <div className='LoginForm__login-section__input'>
-                <input type='text' id='username' name='username' required/>
+                <input type='text' id='username' name='username' autoFocus={true} autoComplete='on' required/>
               </div>
             </div>
             <div>

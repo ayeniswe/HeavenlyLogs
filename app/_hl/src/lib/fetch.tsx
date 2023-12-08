@@ -1,7 +1,5 @@
 import { ROUTE } from "../api/route";
-
-// Use the development URL as the base URL
-const devOrigin = "http://localhost:5000";
+import { ORIGIN } from "../utils/env";
 
 /**
  * Sends a POST request to the specified URL with the provided JSON data.
@@ -12,10 +10,10 @@ const devOrigin = "http://localhost:5000";
 * @return {Promise<any>} - A Promise that resolves to the response data or rejects with an error.
 */
 export const post = async (endpoint: ROUTE, json: object, dev: boolean = false): Promise<any> => {
-    const origin = process.env.NODE_ENV === "development" ? devOrigin : window.location.origin;
-    const url = new URL(endpoint, origin).href;
+    const url = new URL(endpoint, ORIGIN).href;
     try {
         const response = await fetch(url, {
+            credentials: "include",
             method: "POST",
             body: JSON.stringify(json),
             headers: {
@@ -36,10 +34,10 @@ export const post = async (endpoint: ROUTE, json: object, dev: boolean = false):
  * @return {Promise<any>} - A Promise that resolves to the response data or rejects with an error.
  */
 export const get = async (endpoint: ROUTE, dev: boolean = false): Promise<any> => {
-    const origin = process.env.NODE_ENV === "development" ? devOrigin : window.location.origin;
-    const url = new URL(endpoint, origin).href;
+    const url = new URL(endpoint, ORIGIN).href;
     try {
         const response = await fetch(url, {
+            credentials: "include",
             method: "GET",
         });
         const data = await response.json();

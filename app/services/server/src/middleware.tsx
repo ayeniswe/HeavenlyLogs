@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { checkHashWithSalt } from './auth/auth.js';
-import { DB } from './db/db.js';
-import { Message } from './utils/http.js';
+import { DB } from './api/db.js';
+import { HTTP, Message } from './utils/http.js';
 
 /**
  * Authenticates a user with the given username and password.
@@ -14,7 +14,7 @@ import { Message } from './utils/http.js';
 const authenticate = async (db: DB, username: string, password: string): Promise<Message> => {
     const result = await checkHashWithSalt(db, username, password);
     if (result.valid) {
-        return { valid: true, message: crypto.randomBytes(32).toString('hex') };
+        return { valid: true, status: HTTP.OK, message: crypto.randomBytes(32).toString('hex') };
     }
     return result;
 }

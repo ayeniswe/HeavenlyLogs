@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { post } from '../../../../../lib/fetch';
 import { ROUTE } from '../../../../../api/route';
+import { setError } from '../../../../../utils/errors';
 
 export const useLogin = () => {
   const [detail, setDetail] = useState('');
@@ -19,7 +20,7 @@ export const useLogin = () => {
         const formData = new FormData(form);
         const json = Object.fromEntries(formData);
         post(ROUTE.LOGIN, json).then((data) => {
-          setDetail(data.detail);
+          setError(data, setDetail);
           setLoading(false);
         });
       });

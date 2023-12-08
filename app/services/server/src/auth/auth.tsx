@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { DB } from '../db/db.js';
+import { DB } from '../api/db.js';
 import { HTTP, Message } from '../utils/http.js';
 import crypto from 'crypto';
 
@@ -16,7 +16,14 @@ const storeSession = async (db: DB, username: string, cookie: string): Promise<b
 
 const sendCookie = (res: Response, cookie: string, isSecure: boolean) => {
     const maxAge = 259200; // 3 days
-    res.cookie('SID', cookie, { sameSite: isSecure, secure: isSecure, signed: isSecure, maxAge: maxAge, httpOnly: isSecure });
+    res.cookie('SID', cookie, {
+        path: '/',
+        sameSite: isSecure, // remove in production
+        secure: isSecure,
+        signed: isSecure,
+        maxAge: maxAge,
+        httpOnly: isSecure
+    });
 }
 
 /**
@@ -29,9 +36,9 @@ const sendCookie = (res: Response, cookie: string, isSecure: boolean) => {
  * @param {boolean} secure - Determines if the cookie should be secure.
  * @returns {Promise<boolean>} - A promise that resolves a boolean when the cookie is set. Returns false if the cookie could not be set.
  */
-const setCookie = async (db: DB, res: Response, username: string, session: string, secure: boolean): Promise<boolean> => {
+const setCookie = async (db: DB, res: Response, username: string, session: string, isSecure: boolean): Promise<boolean> => {
     if (await storeSession(db, username, session)) {
-        sendCookie(res, session, secure);
+        sendCookie(res, session, isSecure);
         return true;
     }
     return false;
@@ -86,12 +93,6 @@ const checkHashWithSalt = async (db: DB, username: string, password: string): Pr
             return { valid: true, message: "" };
         }
         return { valid: false, status: HTTP.UNAUTHORIZED, message: "Authentication failed" };
-    } else {
-        const { hash, salt } = await createHashWithSalt(password);
-        const valid = await db.createUser(username, hash, salt);
-        if (valid) {
-            console.log(`User ${username} created`);
-        }
     }
     return { valid: false, status: HTTP.NOT_FOUND, message: "User not found" };
 }

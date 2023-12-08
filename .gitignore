@@ -3,4 +3,6 @@ app/_hl/node_modules
 app/services/server/node_modules
 
 # secret
-.env.server
+app/_hl/certs
+certs
+.env
