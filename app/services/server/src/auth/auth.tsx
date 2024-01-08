@@ -18,7 +18,7 @@ const sendCookie = (res: Response, cookie: string, isSecure: boolean) => {
     const maxAge = 259200; // 3 days
     res.cookie('SID', cookie, {
         path: '/',
-        sameSite: isSecure, // remove in production
+        sameSite: isSecure,
         secure: isSecure,
         signed: isSecure,
         maxAge: maxAge,
