@@ -6,18 +6,19 @@ dockerEnv() {
         script_dir="./init.js"
         # Populate DB
         sleep 1 # Wait for server to be ready
-        docker exec ${populate_container_name} mongosh mongodb://${container_name} --file ${script_dir} \
+        docker exec ${populate_container_name} mongosh mongodb://${container_name} --file ${script_dir} > /dev/null \
         &&
-        docker rm -f ${populate_container_name}
+        docker rm -f ${populate_container_name} > /dev/null
     }
 
     # Set app prefix
     if $1 == "true"; then
         app_prefix=$2
         # Start docker containers
-        docker-compose up --build -d
+        docker-compose up -d
+        # docker-compose up --build -d
         # Remove dangling images
-        docker system prune -f
+        docker system prune -f > /dev/null
         populateMongoDB ${app_prefix}
     else
         docker-compose down
