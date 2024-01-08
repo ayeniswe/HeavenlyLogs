@@ -2,7 +2,7 @@ version: '3'
 services:
   server:
     env_file:
-      - ./.env.server
+      - .env
     container_name: hl-server
     image: hl-server:0.1.0
     build:
@@ -11,7 +11,7 @@ services:
       args:
         - name=server
     ports:
-      - 5000:5000
+      - ${SERVER_PORT}:${SERVER_PORT}
     networks:
       - dev
     
@@ -22,11 +22,39 @@ services:
       context: ./
       dockerfile: ./docker/db/mongo/Dockerfile
       args:
-        - name=mongo
-    ports:
-      - 27017:27017
+        - name=mongodb
     depends_on:
       - server
+    networks:
+      - dev
+    
+  populate-db:
+    container_name: hl-populate-db
+    image: hl-populate-db:0.1.0
+    build:
+      context: ./
+      dockerfile: ./docker/db/mongo/Dockerfile.populate
+      args:
+        - name=mongosh
+    depends_on:
+      - mongodb
+    networks:
+      - dev
+
+  hl:
+    env_file:
+      - .env
+    container_name: hl
+    image: hl:0.1.0
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+      args:
+        - name=hl
+    depends_on:
+      - mongodb
+    ports:
+      - ${DEV_PORT}:${DEV_PORT}
     networks:
       - dev
 
